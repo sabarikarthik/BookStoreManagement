@@ -1,0 +1,66 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>New Book</mat-card-title>
+  </mat-card-header>
+
+  <form #bookForm="ngForm" (ngSubmit)="onAddBook(bookForm)">
+    <mat-card-content>
+      <div class="row">
+        <div class="col">
+          <!-- Title field -->
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Title</mat-label>
+            <input matInput name="title" placeholder="Title" [(ngModel)]="newBook.title" required>
+          </mat-form-field>
+        </div>
+
+        <div class="col">
+          <!-- Price field -->
+          <mat-form-field appearance="outline">
+            <mat-label>Price</mat-label>
+            <input matInput name="price" placeholder="Price" [(ngModel)]="newBook.price" type="number" required>
+          </mat-form-field>
+        </div>
+
+        <div class="col">
+          <!-- Amount field -->
+          <mat-form-field appearance="outline">
+            <mat-label>Amount</mat-label>
+            <input matInput name="amount" placeholder="Amount" [(ngModel)]="newBook.amount" type="number" required>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <!-- Publish Date field -->
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Publish Date</mat-label>
+            <input matInput [matDatepicker]="picker" name="publishDate" [(ngModel)]="newBook.publishDate"
+              placeholder="Publish Date">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </div>
+
+        <div class="col">
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Author</mat-label>
+            <mat-select name="author" [(ngModel)]="newBook.author!" required>
+              <mat-option *ngFor="let author of Authors" [value]="author">
+                {{ author.firstName }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button color="primary" type="submit" [disabled]="bookForm.invalid">Submit</button>
+      <button mat-button type="reset">Reset</button>
+    </mat-card-actions>
+
+  </form>
+
+</mat-card>

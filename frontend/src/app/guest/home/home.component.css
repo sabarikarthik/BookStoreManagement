@@ -1,0 +1,22 @@
+.favorite {
+  color: red;
+}
+
+mat-card {
+  width: 100%;
+  max-width: 250px;
+  /* or any other desired maximum width */
+  max-height: 250px;
+  /* or any other desired height */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+@media only screen and (max-width: 600px) {
+  mat-card {
+    max-width: none;
+    height: auto;
+    font-size: auto;
+  }
+}
